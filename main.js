@@ -56,8 +56,8 @@ client.on('message', message =>{
     const is_dc = message.member.roles.cache.has('539627875876208651'); // Division Command
 
     // List of accessable commands
-    if(command === 'ping') {
-        client.commands.get('ping').execute(message, args);
+    if(command === 'help') {
+        client.commands.get('help').execute(message, args, Discord);
     } else if (command === 'setrole' && (is_op || is_hc || is_dc)) {
         client.commands.get('setrole').execute(message, args, Discord, client);
     } else if (command === 'recruit' && is_recruit) {

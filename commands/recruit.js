@@ -4,7 +4,7 @@ module.exports = {
     name: 'recruit',
     description: "processing new arrivals to the server",
     async execute(message, args, Discord, client) {
-        const channel = '872259876670275624'
+        const channel = '872259876670275624' // CHANGE THIS LATER TO 790449629933207572
         const armyRole = message.guild.roles.cache.find(role => role.name === "Army of the Tennessee");
         const recRole = message.guild.roles.cache.find(role => role.name === "Recruit");
 
@@ -30,9 +30,6 @@ module.exports = {
                 if (reaction.emoji.id === armyEmoji.id) {
                     await reaction.message.guild.members.cache.get(user.id).roles.add(armyRole);
                     await reaction.message.guild.members.cache.get(user.id).roles.remove(recRole);
-                    // let nickname = "Pvt. " + message.author.username;
-                    // console.log(nickname);
-                    // await guildMember.guild.setNickname(nickname);
                 }
             } else {
                 console.log("-1")
