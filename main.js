@@ -24,6 +24,8 @@ for (const file of commandFiles) {
 // Assign prefix for bot command
 const prefix = "-";
 
+const recruit = require(`./commands/recruit.js`)
+
 //=============== Constants Loaded =================//
 
 // Bot is ready
@@ -31,6 +33,16 @@ client.once('ready',() => {
     console.log('Soju is ready!');
 });
 
+//===================== Welcome Handler ======================//
+client.on('guildMemberAdd', guildMember =>{
+    let welcomeRole = guildMember.guild.roles.cache.find(role => role.name === 'Recruit');
+
+    guildMember.roles.add(welcomeRole);
+    guildMember.guild.channels.cache.get('872259876670275624').send(`Welcome <@${guildMember.user.id}> to our server! To get you processed in, type -recruit to get started.`);
+    guildMember.setNickname(`Pvt. ${guildMember.user.username}`)
+});
+
+//================= Accessable Commands =====================//
 // Check if user sent message using prefix; ensure that bot cannot use commands
 // Ignore messages without prefix
 client.on('message', message =>{
@@ -38,12 +50,20 @@ client.on('message', message =>{
     
     const args = message.content.slice(prefix.length).split(/ +/);
     const command = args.shift().toLowerCase();
+    const is_recruit = message.member.roles.cache.has('872260025370964008');
+    const is_op = message.member.roles.cache.has('820576392193376256'); // Operator
+    const is_hc = message.member.roles.cache.has('470814564288692224'); // High Command
+    const is_dc = message.member.roles.cache.has('539627875876208651'); // Division Command
 
     // List of accessable commands
     if(command === 'ping') {
         client.commands.get('ping').execute(message, args);
-    } else if (command == 'setrole') {
+    } else if (command === 'setrole' && (is_op || is_hc || is_dc)) {
         client.commands.get('setrole').execute(message, args, Discord, client);
+    } else if (command === 'recruit' && is_recruit) {
+        client.commands.get('recruit').execute(message, args, Discord, client);
+    } else {
+        message.channel.send('You do not have access to this command!');
     }
 });
 

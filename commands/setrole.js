@@ -30,7 +30,7 @@ module.exports = {
         messageEmbed.react(brazilEmoji);
 
         client.on('messageReactionAdd', async (reaction, user) => {
-            console.log('0');
+            // console.log('0');
             if (reaction.message.partial) await reaction.message.fetch();
             if (reaction.partial) await reaction.fetch();
             if (user.bot) return;
