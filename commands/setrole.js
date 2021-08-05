@@ -5,6 +5,8 @@ module.exports = {
     description: "use emojis to set role based on games people play",
     async execute(message, args, Discord, client) {
         const channel = '871885630865571881' // Set to BotOps
+
+        // Set roles from the server
         const leagueRole = message.guild.roles.cache.find(role => role.name === "League");
         const valRole = message.guild.roles.cache.find(role => role.name === "Valorant");
         const apexRole = message.guild.roles.cache.find(role => role.name === "Apex");
@@ -12,6 +14,7 @@ module.exports = {
         const barRole = message.guild.roles.cache.find(role => role.name === "Barotrauma");
         const tf2Role = message.guild.roles.cache.find(role => role.name === "Team Fortress 2");
         
+        // Get custom emojis from the server
         const leagueEmoji = client.emojis.cache.get('872631321787256943');
         const valEmoji = client.emojis.cache.get('872632564614037574');
         const apexEmoji = client.emojis.cache.get('872632966164123728');
