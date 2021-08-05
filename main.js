@@ -52,7 +52,8 @@ client.on('guildMemberAdd', guildMember =>{
     let welcomeRole = guildMember.guild.roles.cache.find(role => role.name === 'Recruit');
 
     guildMember.roles.add(welcomeRole);
-    guildMember.guild.channels.cache.get('872259876670275624').send(`Welcome <@${guildMember.user.id}> to our server! To get you processed in, type -recruit to get started.`);
+    // Channel set to for-new-recruits
+    guildMember.guild.channels.cache.get('790449629933207572').send(`Welcome <@${guildMember.user.id}> to our server! To get you processed in, type -recruit to get started.`);
     guildMember.setNickname(`Pvt. ${guildMember.user.username}`)
 });
 
