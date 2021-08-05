@@ -1,3 +1,17 @@
+// Project: SojuBot
+// Author: Matthew Tom
+// Date: 8/4/2021
+// Version: 1.0.0
+
+//================ Server Port ======================//
+const express = require('express');
+const app = express();
+const port = 3000;
+
+app.get('/', (req, res) => res.send('Connecting to port.'));
+
+app.listen(port, () => console.log("Port connected."));
+
 //=============== Bot Program Start ================//
 
 const config = require('./config.json');
@@ -60,7 +74,7 @@ client.on('message', message =>{
         client.commands.get('help').execute(message, args, Discord);
     } else if (command === 'setrole' && (is_op || is_hc || is_dc)) {
         client.commands.get('setrole').execute(message, args, Discord, client);
-    } else if (command === 'recruit' && is_recruit) {
+    } else if (command === 'recruit' && (is_recruit || is_hc || is_dc || is_op)) {
         client.commands.get('recruit').execute(message, args, Discord, client);
     } else {
         message.channel.send('You do not have access to this command!');

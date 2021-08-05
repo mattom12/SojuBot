@@ -1,10 +1,12 @@
+// Version 1.0.0
+
 const { MessageReaction } = require("discord.js");
 
 module.exports = {
     name: 'recruit',
     description: "processing new arrivals to the server",
     async execute(message, args, Discord, client) {
-        const channel = '872259876670275624' // CHANGE THIS LATER TO 790449629933207572
+        const channel = '790449629933207572' // currently set to for-new-recruits
         const armyRole = message.guild.roles.cache.find(role => role.name === "Army of the Tennessee");
         const recRole = message.guild.roles.cache.find(role => role.name === "Recruit");
 

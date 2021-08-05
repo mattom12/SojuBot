@@ -1,3 +1,5 @@
+// Version 1.0.0
+
 module.exports = {
     name: 'help',
     description: "list all possible commands",

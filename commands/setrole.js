@@ -1,10 +1,12 @@
+// Version 1.0.0
+
 const { MessageReaction } = require("discord.js");
 
 module.exports = {
     name: 'setrole',
     description: "use emojis to set role based on games people play",
     async execute(message, args, Discord, client) {
-        const channel = '871885630865571881' // Set to BotOps
+        const channel = '872697088092278815' // Set to armory
 
         // Set roles from the server
         const leagueRole = message.guild.roles.cache.find(role => role.name === "League");
