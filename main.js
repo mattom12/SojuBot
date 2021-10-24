@@ -1,7 +1,7 @@
 // Project: SojuBot
 // Author: Matthew Tom
 // Date: 8/4/2021
-// Version: 1.0.0
+// Version: 1.0.1
 
 //================ Server Port ======================//
 const express = require('express');

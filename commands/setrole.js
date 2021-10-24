@@ -1,4 +1,4 @@
-// Version 1.0.0
+// Version 1.0.1
 
 const { MessageReaction } = require("discord.js");
 
@@ -15,6 +15,10 @@ module.exports = {
         const genRole = message.guild.roles.cache.find(role => role.name === "Genshin");
         const barRole = message.guild.roles.cache.find(role => role.name === "Barotrauma");
         const tf2Role = message.guild.roles.cache.find(role => role.name === "Team Fortress 2");
+        const smhRole = message.guild.roles.cache.find(role => role.name === "Super Smash Bros");
+        const jackboxRole = message.guild.roles.cache.find(role => role.name === "Jackbox");
+        const gtfoRole = message.guild.roles.cache.find(role => role.name === "GTFO");
+        const minecraftRole = message.guild.roles.cache.find(role => role.name === "Minecraft");
         
         // Get custom emojis from the server
         const leagueEmoji = client.emojis.cache.get('872631321787256943');
@@ -23,6 +27,10 @@ module.exports = {
         const genEmoji = client.emojis.cache.get('872635157516005467');
         const barEmoji = client.emojis.cache.get('872636294784765972');
         const tf2Emoji = client.emojis.cache.get('872661163589132360');
+        const smhEmoji = client.emojis.cache.get('872955437564170301');
+        const jackboxEmoji = client.emojis.cache.get('872961846460682280');
+        const gtfoEmoji = client.emojis.cache.get('872962797804343346');
+        const minecraftEmoji = client.emojis.cache.get('872967614136209499');
 
         let embed = new Discord.MessageEmbed()
         .setColor('#800813')
@@ -45,6 +53,16 @@ module.exports = {
             {name: '\u200B', value: '\u200B', inline: true },
             {name: '<:teamfortress:872661163589132360> Team Fortress 2', value: 'A classic battle of Red versus Blue.', inline: true },
         )
+        .addFields(
+            {name: '<:smash:872955437564170301> Super Smash Bros', value: 'When smashing in bed is not enough.', inline: true },
+            {name: '\u200B', value: '\u200B', inline: true },
+            {name: '<:jackbox:872961846460682280> Jackbox', value: 'The Jack in the box was a bit too creepy. Seriously, look up the jackbox icon.', inline: true },
+        )
+        .addFields(
+            {name: '<:gtfo:872962797804343346> GTFO', value: `Fuck this shit I'm out.`, inline: true },
+            {name: '\u200B', value: '\u200B', inline: true },
+            {name: '<:minecraft:872967614136209499> Minecraft', value: 'Where is the damn Cave Update.', inline: true },
+        )
         .setFooter('More games to be added upon request!');
 
         let messageEmbed = await message.channel.send(embed);
@@ -54,6 +72,10 @@ module.exports = {
         messageEmbed.react(genEmoji);
         messageEmbed.react(barEmoji);
         messageEmbed.react(tf2Emoji);
+        messageEmbed.react(smhEmoji);
+        messageEmbed.react(jackboxEmoji);
+        messageEmbed.react(gtfoEmoji);
+        messageEmbed.react(minecraftEmoji);
 
         client.on('messageReactionAdd', async (reaction, user) => {
             if (reaction.message.partial) await reaction.message.fetch();
@@ -78,6 +100,18 @@ module.exports = {
                 }
                 if (reaction.emoji.id === tf2Emoji.id) {
                     await reaction.message.guild.members.cache.get(user.id).roles.add(tf2Role);
+                }
+                if (reaction.emoji.id === smhEmoji.id) {
+                    await reaction.message.guild.members.cache.get(user.id).roles.add(smhRole);
+                }
+                if (reaction.emoji.id === jackboxEmoji.id) {
+                    await reaction.message.guild.members.cache.get(user.id).roles.add(jackboxRole);
+                }
+                if (reaction.emoji.id === gtfoEmoji.id) {
+                    await reaction.message.guild.members.cache.get(user.id).roles.add(gtfoRole);
+                }
+                if (reaction.emoji.id === minecraftEmoji.id) {
+                    await reaction.message.guild.members.cache.get(user.id).roles.add(minecraftRole);
                 }
             } else {
                 return;
@@ -108,6 +142,18 @@ module.exports = {
                 }
                 if (reaction.emoji.id === tf2Emoji.id) {
                     await reaction.message.guild.members.cache.get(user.id).roles.remove(tf2Role);
+                }
+                if (reaction.emoji.id === smhEmoji.id) {
+                    await reaction.message.guild.members.cache.get(user.id).roles.remove(smhRole);
+                }
+                if (reaction.emoji.id === jackboxEmoji.id) {
+                    await reaction.message.guild.members.cache.get(user.id).roles.remove(jackboxRole);
+                }
+                if (reaction.emoji.id === gtfoEmoji.id) {
+                    await reaction.message.guild.members.cache.get(user.id).roles.remove(gtfoRole);
+                }
+                if (reaction.emoji.id === minecraftEmoji.id) {
+                    await reaction.message.guild.members.cache.get(user.id).roles.remove(minecraftRole);
                 }
             } else {
                 return;
